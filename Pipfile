@@ -6,6 +6,13 @@ name = "pypi"
 [packages]
 django = "*"
 djangorestframework = "*"
+python-dotenv = "*"
+pyjwt = "*"
+psycopg2-binary = "*"
+drf-yasg = "*"
+djangorestframework-simplejwt = "*"
+pytest = "*"
+pytest-django = "*"
 
 [dev-packages]
 
