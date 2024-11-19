@@ -1,3 +1,12 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import (
+    CallRecord, 
+    PhoneBill, 
+    CallDetail
+)
+
+
+admin.site.register(CallRecord)
+admin.site.register(PhoneBill)
+admin.site.register(CallDetail)
