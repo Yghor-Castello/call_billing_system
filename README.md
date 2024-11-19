@@ -36,9 +36,6 @@ docker-compose up --build
 ### 3. Aplicar Migrações e Criar Superusuário
 
 ```
-docker-compose exec backend python manage.py makemigrations
-```
-```
 docker-compose exec backend python manage.py migrate
 ```
 ```
@@ -48,7 +45,7 @@ docker-compose exec backend python manage.py createsuperuser
 ### 4. Carregamento das fixtures para popular o banco de dados
 
 ```
-docker-compose exec backend python manage.py loaddata loans_fixture.json
+docker-compose exec backend python manage.py loaddata billing_fixture.json
 ```
 
 ### 5. Acessar a API
@@ -64,3 +61,9 @@ docker-compose exec backend pytest
 ### 7. Insomnia Collection
 
 - Para testar a API via Insomnia acesse a pasta insomnia_collection e import o arquivo json no seu Insomnia.# call_billing_system
+
+<!-- Endpoint que precisamos passar para conferir as rotas.  -->
+- http://localhost:8000/api/phone-bills?phone_number=99988526423&period=2016-02
+- http://localhost:8000/api/phone-bills?phone_number=99988526423&period=2017-12
+- http://localhost:8000/api/phone-bills?phone_number=99988526423
+- http://localhost:8000/api/phone-bills?phone_number=99988526423&period=2015-01
