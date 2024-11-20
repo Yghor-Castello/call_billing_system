@@ -3,6 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.utils.timezone import make_aware, get_current_timezone
 
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 from datetime import datetime, timedelta
 
 from .models import CallRecord
@@ -14,7 +16,14 @@ class CallRecordView(APIView):
     """
     View to create call records (start and end).
     """
-
+    @swagger_auto_schema(
+        operation_description="Create a call record (start or end).",
+        request_body=CallRecordSerializer,
+        responses={
+            201: CallRecordSerializer,
+            400: "Invalid data provided.",
+        },
+    )
     def post(self, request):
         serializer = CallRecordSerializer(data=request.data)
         if serializer.is_valid():
@@ -24,6 +33,33 @@ class CallRecordView(APIView):
 
 
 class PhoneBillView(APIView):
+    """
+    View to retrieve phone billing information for a given phone number 
+    and billing period.
+    """
+    @swagger_auto_schema(
+        operation_description="Retrieve the phone bill for a given phone number and period.",
+        manual_parameters=[
+            openapi.Parameter(
+                'phone_number',
+                openapi.IN_QUERY,
+                description="Phone number to fetch the bill for.",
+                type=openapi.TYPE_STRING,
+                required=True,
+            ),
+            openapi.Parameter(
+                'period',
+                openapi.IN_QUERY,
+                description="Billing period in YYYY-MM format.",
+                type=openapi.TYPE_STRING,
+                required=False,
+            ),
+        ],
+        responses={
+            200: PhoneBillSerializer,
+            400: "Bad request or invalid parameters.",
+        },
+    )
     def get(self, request):
         phone_number = request.query_params.get("phone_number")
         period = request.query_params.get("period")

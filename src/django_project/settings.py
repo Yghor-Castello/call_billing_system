@@ -44,8 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #Apps
+    # Apps
     'billing',
+
+    # Swagger
+    'drf_yasg',
 
 ]
 
