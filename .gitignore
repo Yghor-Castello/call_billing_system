@@ -56,10 +56,8 @@ instance/
 venv/
 setenv.sh
 
-#serverless
-.serverless
-config.local.json
-config.dev.json
-
-#Insomnia
+# Insomnia
 insomnia.rest
+
+# Tests
+.coverage
