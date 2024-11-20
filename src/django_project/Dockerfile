@@ -7,7 +7,7 @@ ENV PATH="/home/appuser/.local/bin:$PATH"
 
 # Create and use a non-root user
 RUN useradd --create-home appuser
-WORKDIR /app/src/django_project
+WORKDIR /app/src
 COPY --chown=appuser:appuser ./requirements.txt .
 
 # Install global dependencies as root
