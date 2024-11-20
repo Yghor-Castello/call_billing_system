@@ -1,39 +1,38 @@
 # Call Billing System API
 
-## Descrição
+## Description
 
-API REST desenvolvida com Django e Django REST Framework para gerenciamento de chamadas telefônicas e faturamento. A aplicação permite que os usuários insiram, visualizem e gerenciem registros detalhados de chamadas, além de calcular automaticamente o custo das chamadas com base na duração, horários tarifários e taxas aplicáveis. A autenticação é realizada via token JWT.
+REST API developed with Django and Django REST Framework for managing phone calls and billing. The application allows users to input, view, and manage detailed call records, as well as automatically calculate call costs based on duration, rate schedules, and applicable fees. Authentication is handled via JWT tokens.
 
-## Tecnologias Utilizadas
+## Technologies Used
 
-- **Django** e **Django REST Framework**
+- **Django** and **Django REST Framework**
 - **PostgreSQL** (via Docker)
-- **Docker** e **Docker Compose**
-- **Autenticação via Token JWT**
+- **Docker** and **Docker Compose**
+- **JWT Authentication**
 
-## Funcionalidades
+## Features
 
-- **Gerenciamento de Empréstimos**: Registro e visualização de chamadas telefônicas com dados como origem, destino, duração e horário.
-- **Gerenciamento de Pagamentos**: Cálculo automático do custo das chamadas com base na duração, horários tarifários e taxas aplicáveis.
-- **Autenticação JWT**: Garantia de que os usuários só podem acessar e gerenciar seus próprios registros e faturas de chamadas.
-- **Soft Delete**: Registros não são deletados permanentemente, mas marcados como removidos para maior segurança e rastreabilidade.
+- **Call Management**: Register and view phone call details, including origin, destination, duration, and timestamp.
+- **Billing Management**: Automatically calculate call costs based on call duration, time-of-day rates, and applicable fees.
+- **JWT Authentication**: Ensure secure access, allowing users to manage only their own call records and invoices.
 
-## Instruções para Configuração
+## Setup Instructions
 
-### 1. Clonar o Repositório
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/xxxxxxxxxxxxxxxxx
+git clone https://github.com/Yghor-Castello/call_billing_system
 cd call-billiing-system-api
 ```
 
-### 2. Configurar e Iniciar com Docker
+### 2. Configure and Start with Docker
 
 ```
 docker-compose up --build
 ```
 
-### 3. Aplicar Migrações e Criar Superusuário
+### 3. Apply Migrations and Create a Superuser
 
 ```
 docker-compose exec backend python manage.py migrate
@@ -42,17 +41,17 @@ docker-compose exec backend python manage.py migrate
 docker-compose exec backend python manage.py createsuperuser
 ```
 
-### 4. Carregamento das fixtures para popular o banco de dados
+### 4. Load Fixtures to Populate the Database
 
 ```
 docker-compose exec backend python manage.py loaddata billing_fixture.json
 ```
 
-### 5. Acessar a API
+### 5. Access the API
 
-- A API estará disponível em http://localhost:8000/.
+- The API will be available at http://localhost:8000/.
 
-### 6. Executando Testes
+### 6. Running Tests
 
 ```
 docker-compose exec backend pytest
@@ -60,9 +59,8 @@ docker-compose exec backend pytest
 
 ### 7. Insomnia Collection
 
-- Para testar a API via Insomnia acesse a pasta insomnia_collection e import o arquivo json no seu Insomnia.# call_billing_system
+- To test the API using Insomnia, navigate to the insomnia_collection folder and import the JSON file into your Insomnia workspace.
 
-<!-- Endpoint que precisamos passar para conferir as rotas.  -->
 - http://localhost:8000/api/phone-bills?phone_number=99988526423&period=2016-02
 - http://localhost:8000/api/phone-bills?phone_number=99988526423&period=2017-12
 - http://localhost:8000/api/phone-bills?phone_number=99988526423
